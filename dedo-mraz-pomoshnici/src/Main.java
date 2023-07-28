@@ -1,34 +1,31 @@
+import java.io.IOException;
 import java.util.HashMap;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args) {
-        HashMap<String, String> zhelbiZaPodarok = new HashMap<>();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        zhelbiZaPodarok.put("Marija", "Barkika");
-        zhelbiZaPodarok.put("Marko", "Velosiped");
-        zhelbiZaPodarok.put("Dimitar", "Nintendo Switch");
-        zhelbiZaPodarok.put("Snezana", "Elka za Nova Godina");
-        zhelbiZaPodarok.put("Mirce", "Kuche");
-        zhelbiZaPodarok.put("Neso", "Bumerang");
-        zhelbiZaPodarok.put("Zarko Kezarovski", "Sijamska machka");
+        HashMap<String, String> zhelbiZaPodarok = new HashMap<>();
 
         DedoMrazPomoshnici dedoMrazPomoshnici = new DedoMrazPomoshnici(zhelbiZaPodarok);
 
-        String[] iminjaZaProverka = {
-                "Marija",
-                "Marko",
-                "Snezhana",
-                "Zharko Kezharovski"
-        };
+        int n = Integer.parseInt(br.readLine());
 
-        for (String ime : iminjaZaProverka) {
-            String podarok = dedoMrazPomoshnici.najdiZhelba(ime);
+        for (int i = 0; i < n; i += 1) {
+            String[] imeIPodarok = br.readLine().split(" ");
+            zhelbiZaPodarok.put(imeIPodarok[0], imeIPodarok[1]);
+        }
 
-            if (podarok != null) {
-                System.out.println(ime + " saka podarok " + podarok);
-            } else {
-                System.out.println(ime + " nema podarok");
-            }
+        String ime = br.readLine();
+
+        String podarok = dedoMrazPomoshnici.najdiZhelba(ime);
+
+        if (podarok != null) {
+            System.out.println(ime + " saka podarok " + podarok);
+        } else {
+            System.out.println(ime + " nema podarok");
         }
     }
 }
