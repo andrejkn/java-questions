@@ -28,10 +28,12 @@ public class DedoMrazPomoshnici {
     }
 
     private String prevediIme(String ime) {
+        String prevedenoIme = ime;
+
         for (String novaTranscripcija : novaDoStaraTranskripcija.keySet()) {
-            ime = ime.replaceAll(novaTranscripcija, novaDoStaraTranskripcija.get(novaTranscripcija));;
+            prevedenoIme = prevedenoIme.replaceAll(novaTranscripcija, novaDoStaraTranskripcija.get(novaTranscripcija));;
         }
 
-        return ime;
+        return prevedenoIme;
     }
 }
